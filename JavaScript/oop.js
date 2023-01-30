@@ -53,5 +53,22 @@ console.log(Bella);
 console.log(Bella.fullName);
 const Penny = new PetMeds("Penny", "", 1, "Jumping Spider", "Phiddipus Regius", "Tan", "08:00", "14:00");
 console.log(Penny.giveMeds("12:00"));
+console.log();
 
 // ----- Rental Activity -----
+class Rental
+{
+    constructor(storeName, address, contactNumber, moviesAvailable)
+    {
+        this.storeName = storeName;
+        this.address = address;
+        this.contactNumber = contactNumber;
+        this.moviesAvailable = moviesAvailable;
+    }
+    test()
+    {
+        return `${storeName} ${address} ${contactNumber} ${moviesAvailable}`
+    }
+}
+
+console.log(Rental.test());
