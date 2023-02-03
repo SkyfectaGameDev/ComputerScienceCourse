@@ -55,7 +55,7 @@ const Penny = new PetMeds("Penny", "", 1, "Jumping Spider", "Phiddipus Regius", 
 console.log(Penny.giveMeds("12:00"));
 console.log();
 
-// ----- Rental Activity -----
+// ----- Rental Store Activity -----
 class Rental
 {
     constructor(storeName, address, contactNumber, moviesAvailable)
@@ -65,10 +65,54 @@ class Rental
         this.contactNumber = contactNumber;
         this.moviesAvailable = moviesAvailable;
     }
-    test()
+    test() 
     {
-        return `${storeName} ${address} ${contactNumber} ${moviesAvailable}`
+        return `Store: ${this.storeName}  /  Address: ${this.address}  /  Contact Number: ${this.contactNumber}  /  Movies Available: ${this.moviesAvailable}`
+    }
+    movies()
+    {
+        console.log(`Movies Available at ${this.storeName}:`)
+        for (let i = 0; i < this.moviesAvailable.length; i++)
+        {
+            console.log(this.moviesAvailable[i]);
+        }
+    }
+    moviePrices()
+    {
+        console.log(`Movies Available at ${this.storeName}:`)
+        for (let i = 0; i < this.moviesAvailable.length; i++)
+        {
+            console.log(`${this.moviesAvailable[i][0]}: $${this.moviesAvailable[i][1]}`);
+        }
     }
 }
 
-console.log(Rental.test());
+let newMovies = [
+    "Back to the Future Part III",
+    "Terminator 2",
+    "Total Recall"
+]
+
+const store = new Rental("HMV", "Arndale Shopping Center, Manchester", "01234567890", ["Spider-Man", "Bullet Train", "Free Guy"])
+console.log(store.test());
+const store2 = new Rental("Blockbuster", "The Past, 1991", "01219101985", newMovies)
+console.log(store2.test());
+console.log();
+
+// ----- Rental Movies Activity -----
+store.movies();
+console.log();
+
+store2.movies();
+console.log();
+
+// ----- Rental Movie Prices Activity -----
+let pricedMovies = [
+    ["Back to the Future Part III", 20.00.toFixed(2)],
+    ["Terminator 2", 24.50.toFixed(2)],
+    ["Total Recall", 25.00.toFixed(2)]
+]
+const store2Priced = new Rental("Blockbuster", "The Past, 1991", "01219101985", pricedMovies);
+store2Priced.moviePrices();
+
+// ----- Cyberpet Stretch Activity -----
