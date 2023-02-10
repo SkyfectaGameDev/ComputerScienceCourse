@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
-    <title>Styling Elements with JS</title>
+    <title>Cyber Zoo</title>
 </head>
 <style>
     @import url('https://fonts.cdnfonts.com/css/lemonmilk');
@@ -11,47 +11,79 @@
 
 <body>
     <div id="top-row">
-            <button id="start-button">START</button>
-            <h1>PET SAFARI</h1>
-            <button id="exit-button">EXIT</button>
+        <button id="start-button">START</button>
+        <!-- <button id="restart-button">RESTART</button> change to this after starting -->
+        <h1>Cyber Zoo</h1>
+        <button id="exit-button">EXIT</button>
     </div>
 
     <div id="pet-descriptors">
         <small id="pet-emote">PET NAME is currently sad.</small>
         <small id="pet-action">You Fed PET NAME.</small>
     </div>
+
+    <div id = "starting-instructions">
+        <h3 id = "instructor"></h3>
+        <input id="text-input" type="text">
+        <button class = button id ="sloth-start">Sloth</button>
+        <button class = button id ="peng-start">Penguin</button>
+        <button class = button id ="eleph-start">Elephant</button>
+    </div>
+
     <div id="pet-space">
         <div id="status">
-            <div id="status-box">
-                <small id="status-text">HUNGER:</small>
-                <div ID="status-bar"><small>10</small></div> <!-- STATUS BAR GOES HERE --> 
+            <div class = "status-box">
+                <small class = "status-text">HEALTH:</small>
+                <div class ="status-bar" id="status-health"><small>100</small></div> <!-- STATUS BAR GOES HERE --> 
             </div>
-            <div id="status-box">
-                <small id="status-text">THIRST:</small>
-                <div ID="status-bar"><small>10</small></div>  <!-- STATUS BAR GOES HERE -->                 
+            <div class = "status-box">
+                <small class = "status-text">HUNGER:</small>
+                <div class ="status-bar" id="status-hunger"><small>100</small></div> <!-- STATUS BAR GOES HERE --> 
             </div>
-            <div id="status-box">
-                <small id="status-text">COMFORT:</small>
-                <div ID="status-bar"><small>10</small></div>  <!-- STATUS BAR GOES HERE -->                 
+            <div class = "status-box">
+                <small class = "status-text">THIRST:</small>
+                <div class ="status-bar" id="status-thirst"><small>100</small></div>  <!-- STATUS BAR GOES HERE -->                 
             </div>
-            <div id="status-box">
-                <small id="status-text">SOCIAL:</small>
-                <div ID="status-bar"><small>10</small></div>  <!-- STATUS BAR GOES HERE -->                 
+            <div class = "status-box">
+                <small class = "status-text">COMFORT:</small>
+                <div class ="status-bar" id="status-comfort"><small>100</small></div>  <!-- STATUS BAR GOES HERE -->                 
             </div>
-            <div id="status-box">
-                <small id="status-text">HYGIENE:</small>
-                <div ID="status-bar"><small>10</small></div>  <!-- STATUS BAR GOES HERE -->                
+            <div class = "status-box">
+                <small class = "status-text">SOCIAL:</small>
+                <div class ="status-bar" id="status-social"><small>100</small></div>  <!-- STATUS BAR GOES HERE -->                 
+            </div>
+            <div class = "status-box">
+                <small class = "status-text">HYGIENE:</small>
+                <div class ="status-bar" id="status-hygiene"><small>100</small></div>  <!-- STATUS BAR GOES HERE -->                
             </div>
         </div>
-        <div id = "sloth-images">
-            <img id = "backgroundImage" id = "jungle-background" src = "https://static.vecteezy.com/system/resources/previews/007/252/738/original/cartoon-forest-environment-background-free-vector.jpg">
-            <img id = "mainImage"  src= "https://media.tenor.com/_-I2sChX9Y4AAAAi/sloth-animal.gif">
-            <!--
-            <img id = "mainImage"  src = "https://media.tenor.com/xSQlP_kntasAAAAi/sloth-smile.gif">
-            <img id = "mainImage"  src = "https://media.tenor.com/_V5moQ8H2wkAAAAi/sloth-animal.gif">
-            <img id = "mainImage"  src = "https://media.tenor.com/CiRq3qmYg44AAAAi/sloth-animal.gif">
-            <img id = "mainImage"  src = "https://media.tenor.com/dLYc20Z6GbAAAAAi/sloth-animal.gif">
-            -->
+        <div id = "images">
+            <img class = "backgroundImage" id = "starter-background" src = "/Images/zoo-entrance.jpg">
+            <img class = "mainImage" id = "starterEgg" src = "https://media.tenor.com/AMEXdD396dsAAAAi/bluewizarddigital-blue-wizard.gif">
+            <img class = "backgroundImage" id = "jungle-background" src = "https://static.vecteezy.com/system/resources/previews/007/252/738/original/cartoon-forest-environment-background-free-vector.jpg">
+            <img class = "mainImage" id = "slothCry" src= "https://media.tenor.com/_-I2sChX9Y4AAAAi/sloth-animal.gif">
+            <img class = "mainImage" id = "slothChill" src = "https://media.tenor.com/xSQlP_kntasAAAAi/sloth-smile.gif">
+            <img class = "mainImage" id = "slothHappy" src = "https://media.tenor.com/_V5moQ8H2wkAAAAi/sloth-animal.gif">
+            <img class = "mainImage" id = "slothEat" src = "https://media.tenor.com/dLYc20Z6GbAAAAAi/sloth-animal.gif">
+            <img class = "mainImage" id = "slothTrim" src = "https://media.tenor.com/3QzBvxddJugAAAAi/sloth-animal.gif">
+            <img class = "mainImage" id = "slothDisg" src = "https://media.tenor.com/jjMvyp9TQNgAAAAi/sloth-animal.gif">
+            <img class = "mainImage" id = "slothWatch" src = "https://media.tenor.com/thwVVbFn8SQAAAAi/sloth-animal.gif">
+            <img class = "backgroundImage" id = "snow-background" src = "https://media.tenor.com/UQcABowZjPIAAAAC/snow-snowing.gif">
+            <img class = "mainImage" id = "penChill" src = "https://media.tenor.com/6GrHbyaN42gAAAAi/cute-penguin.gif">
+            <img class = "mainImage" id = "penSpicy" src = "https://media.tenor.com/cC9tsZyVpOwAAAAi/cute-penguin.gif">
+            <img class = "mainImage" id = "penHappy" src = "https://media.tenor.com/n5nh76V0D1YAAAAi/cute-penguin.gif">
+            <img class = "mainImage" id = "penSleep" src = "https://media.tenor.com/5Mo69ILzGBUAAAAi/cute-penguin.gif">
+            <img class = "mainImage" id = "penSad" src = "https://media.tenor.com/YVwU2JeLGfwAAAAi/cute-penguin.gif">
+            <img class = "mainImage" id = "penDance" src = "https://media.tenor.com/EoD4WRQ_rgcAAAAi/cute-penguin.gif">
+            <img class = "mainImage" id = "penBlowDry" src = "https://media.tenor.com/bgaFr7J8PyEAAAAi/cute-penguin.gif">
+            <img class = "backgroundImage" id = "desert-background" src = "/Images/desert-background.jpeg">
+            <img class = "mainImage" id = "eleMad" src = "https://media.tenor.com/fnMSklaZPvMAAAAi/canticos-elephant.gif">
+            <img class = "mainImage" id = "eleChill" src = "https://media.tenor.com/wDRmVMHAwQcAAAAi/canticos-benji.gif">
+            <img class = "mainImage" id = "eleToy" src = "https://media.tenor.com/hQSYbzj9eAQAAAAi/canticos-elephant.gif">
+            <img class = "mainImage" id = "eleHappy" src = "https://media.tenor.com/r8k6n9Y5vKgAAAAi/canticos-benji.gif">
+            <img class = "mainImage" id = "eleEat" src = "https://media.tenor.com/0gPrxXWLmeQAAAAi/canticos-yum.gif">
+            <img class = "mainImage" id = "eleClean" src = "https://media.tenor.com/V2Eccq4wNw8AAAAi/canticos-elephant.gif">
+            <img class = "mainImage" id = "eleBal" src = "https://media.tenor.com/nh2DcAW140AAAAAi/canticos-elephant.gif">
         </div>
         <div id="inputs">
             <button id ="action-button">FEED</button>
@@ -59,33 +91,6 @@
             <button id ="action-button">INTERACT</button>
             <button id ="action-button">GIVE</button>
         </div>
-    </div>
-
-    <!-- <button id="submit">Next</button> -->
-<!--     
-    <div id = "penguin-images">
-        <img id = "backgroundImage" id = "snow-background" src = "https://media.tenor.com/UQcABowZjPIAAAAC/snow-snowing.gif">
-        <img id = "mainImage" id = "penswing" src = "https://media.tenor.com/6GrHbyaN42gAAAAi/cute-penguin.gif">
-        <img id = "mainImage" id = "penfire" src = "https://media.tenor.com/cC9tsZyVpOwAAAAi/cute-penguin.gif">
-        <img id = "mainImage" id = "penlove" src = "https://media.tenor.com/n5nh76V0D1YAAAAi/cute-penguin.gif">
-        <img id = "mainImage" id = "penthanks" src = "https://media.tenor.com/EHFHLRuiiRcAAAAi/cute-penguin.gif">
-        <img id = "mainImage" id = "pendance" src = "https://media.tenor.com/Kz6JJnzk65sAAAAj/cute-penguin.gif">
-        <img id = "mainImage" id = "pensleep" src = "https://media.tenor.com/5Mo69ILzGBUAAAAi/cute-penguin.gif">
-        <img id = "mainImage" id = "pensad" src = "https://media.tenor.com/YVwU2JeLGfwAAAAi/cute-penguin.gif">
-    </div>
-
-    <div id = "elephant-images">
-        <img id = "backgroundImage" id = "desert-background" src = "https://img.freepik.com/free-vector/empty-desert-forest-landscape-sunset-time-scene_1308-56793.jpg?w=1480&t=st=1675868691~exp=1675869291~hmac=d8ed8fc4b55c3aed9f2634c38ab39368941fcc95661ff6e6cf917f5df809d09a">
-        <img id = "mainImage" src = "https://media.tenor.com/fnMSklaZPvMAAAAi/canticos-elephant.gif">
-        <img id = "mainImage" src = "https://media.tenor.com/wDRmVMHAwQcAAAAi/canticos-benji.gif">
-        <img id = "mainImage" src = "https://media.tenor.com/hQSYbzj9eAQAAAAi/canticos-elephant.gif">
-        <img id = "mainImage" src = "https://media.tenor.com/r8k6n9Y5vKgAAAAi/canticos-benji.gif">
-        <img id = "mainImage" src = "https://media.tenor.com/0gPrxXWLmeQAAAAi/canticos-yum.gif">
-        <img id = "mainImage" src = "https://media.tenor.com/V2Eccq4wNw8AAAAi/canticos-elephant.gif">
-    </div> -->
-
-
-
     </div>
 
     <script src="app.js"></script>
