@@ -197,7 +197,7 @@ slothBtn.addEventListener("click", ()=> {
     backgrounds[0].style.display = "none"
     jungleBack.style.display = "block"
     slothStan.style.display = "block"
-    const yourPet = new sloth(`${givenName}`, `${givenTrait}`, "Sloth", 50, 50, 50, 50, 50, 50);
+    const yourPet = new sloth(`${givenName}`, `${givenTrait}`, "Sloth", 50, 20, 80, 50, 20, 00);
     updateStats(yourPet)
     })
 
@@ -231,36 +231,132 @@ const updateStats = (yourPet) => {
     socialNum.textContent = yourPet.social
     hygieneNum.textContent = yourPet.hygiene
 
-    if (yourPet.health < 30){
-        // image of standard pet hidden
-        // image of sad/angry pet shown
-        // text box displays with "${this.firstname} is feeling neglected!"
-    }
-    else if (yourPet.hunger < 30) {
-        // text box displays with "${this.firstname} is hungry!"
-    }
-    else if (yourPet.thirst < 30) {
-        // text box displays with "${this.firstname} is thirsty!"
-    }
-    else if (yourPet.social< 30) {
-        // text box displays with "${this.firstname} needs some attention!"
-    }
-    else if (yourPet.hygiene < 30) {
-        // text box displays with "${this.firstname} could use a bath!"
-    }
-    else if (yourPet.comfort< 30) {
-        // text box displays with "${this.firstname} is uncomfy!"
-    }
-
-    else if (yourPet.health < 75) {
+    // ----- Health Bar -----
+    if (yourPet.health >= 75) {
+        healthNum.style.width = "110px";
+        healthNum.style.backgroundColor = "lime;";
         // image of standard pet hidden
         // image of happy/lovey pet shown
         // text box displays with "${this.firstname} is happy!."
     }
-    else {
+    else if (yourPet.health < 75 && yourPet.health > 35) {
+        healthNum.style.width = "55px";
+        healthNum.style.backgroundColor = "Yellow";
         // image of sad/angry pet hidden
         // image of standard pet shown
         // text box displays with "${this.firstname} is doing okay."
     }
-  
+    else {
+        healthNum.style.width = "35px";
+        healthNum.style.backgroundColor = "Red";
+        // image of standard pet hidden
+        // image of sad/angry pet shown
+        // text box displays with "${this.firstname} is feeling neglected!"
+    }
+
+    // ----- Hunger Bar -----
+    if (yourPet.hunger >= 75) {
+        hungerNum.style.width = "110px";
+        hungerNum.style.backgroundColor = "lime;";
+        // text box displays with "${this.firstname} is hungry!"
+    }
+    else if (yourPet.hunger < 75 && yourPet.hunger > 35) {
+        hungerNum.style.width = "55px";
+        hungerNum.style.backgroundColor = "Yellow";
+        // image of sad/angry pet hidden
+        // image of standard pet shown
+        // text box displays with "${this.firstname} is doing okay."
+    }
+    else {
+        hungerNum.style.width = "35px";
+        hungerNum.style.backgroundColor = "Red";
+        // image of standard pet hidden
+        // image of sad/angry pet shown
+        // text box displays with "${this.firstname} is feeling neglected!"
+    }
+
+    // ----- Thirst Bar -----
+    if (yourPet.thirst >= 75) {
+        thirstNum.style.width = "110px";
+        thirstNum.style.backgroundColor = "lime;";
+        // text box displays with "${this.firstname} is thirsty!"
+    }
+    else if (yourPet.thirst < 75 && yourPet.thirst > 35) {
+        thirstNum.style.width = "55px";
+        thirstNum.style.backgroundColor = "Yellow";
+        // image of sad/angry pet hidden
+        // image of standard pet shown
+        // text box displays with "${this.firstname} is doing okay."
+    }
+    else {
+        thirstNum.style.width = "35px";
+        thirstNum.style.backgroundColor = "Red";
+        // image of standard pet hidden
+        // image of sad/angry pet shown
+        // text box displays with "${this.firstname} is feeling neglected!"
+    }
+
+    // ----- Social Bar -----
+    if (yourPet.social >= 75) {
+        socialNum.style.width = "110px";
+        socialNum.style.backgroundColor = "lime;";
+        // text box displays with "${this.firstname} needs some attention!"
+    }
+    else if (yourPet.social < 75 && yourPet.social > 35) {
+        socialNum.style.width = "55px";
+        socialNum.style.backgroundColor = "Yellow";
+        // image of sad/angry pet hidden
+        // image of standard pet shown
+        // text box displays with "${this.firstname} is doing okay."
+    }
+    else {
+        socialNum.style.width = "35px";
+        socialNum.style.backgroundColor = "Red";
+        // image of standard pet hidden
+        // image of sad/angry pet shown
+        // text box displays with "${this.firstname} is feeling neglected!"
+    }
+
+    // ----- Hygiene Bar -----
+    if (yourPet.hygiene >= 75) {
+        hygieneNum.style.width = "110px";
+        hygieneNum.style.backgroundColor = "lime;";
+        // text box displays with "${this.firstname} could use a bath!"
+    }
+    else if (yourPet.hygiene < 75 && yourPet.hygiene > 35) {
+        hygieneNum.style.width = "55px";
+        hygieneNum.style.backgroundColor = "Yellow";
+        // image of sad/angry pet hidden
+        // image of standard pet shown
+        // text box displays with "${this.firstname} is doing okay."
+    }
+    else {
+        hygieneNum.style.width = "35px";
+        hygieneNum.style.backgroundColor = "Red";
+        // image of standard pet hidden
+        // image of sad/angry pet shown
+        // text box displays with "${this.firstname} is feeling neglected!"
+    }
+
+    // ----- Comfort Bar -----
+    if (yourPet.comfort >= 75) {
+        comfortNum.style.width = "110px";
+        comfortNum.style.backgroundColor = "lime;";
+        // text box displays with "${this.firstname} is uncomfy!"
+    }
+    else if (yourPet.comfort < 75 && yourPet.comfort > 35) {
+        comfortNum.style.width = "55px";
+        comfortNum.style.backgroundColor = "Yellow";
+        // image of sad/angry pet hidden
+        // image of standard pet shown
+        // text box displays with "${this.firstname} is doing okay."
+    }
+    else {
+        comfortNum.style.width = "35px";
+        comfortNum.style.backgroundColor = "Red";
+        // image of standard pet hidden
+        // image of sad/angry pet shown
+        // text box displays with "${this.firstname} is feeling neglected!"
+    }
+
 }

@@ -207,7 +207,7 @@ color: white;
 
 .status-bar {
     width: 110px;
-    background-color: rgb(55, 209, 55);
+    background-color: lime;
     border: 3px black solid;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 20px;
