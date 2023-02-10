@@ -1,5 +1,3 @@
-let imageTest = 0;
-
 class Pet {
     constructor(firstName, trait, health, hunger, thirst, comfort, social, hygiene) {
     this.firstName = firstName;

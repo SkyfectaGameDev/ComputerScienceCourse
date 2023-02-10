@@ -4,22 +4,44 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
     <title>Styling Elements with JS</title>
-
 </head>
+<style>
+    @import url('https://fonts.cdnfonts.com/css/lemonmilk');
+</style>
+
 <body>
     <div id="top-row">
-            <button id="start-button">Start</button>
-            <h1>Pet name</h1>
-            <button id="exit-button">Exit</button>
+            <button id="start-button">START</button>
+            <h1>PET SAFARI</h1>
+            <button id="exit-button">EXIT</button>
     </div>
 
-
-
-
-    
+    <div id="pet-descriptors">
+        <small id="pet-emote">PET NAME is currently sad.</small>
+        <small id="pet-action">You Fed PET NAME.</small>
+    </div>
     <div id="pet-space">
         <div id="status">
-            <button id="hunger">Hunger</button>
+            <div id="status-box">
+                <small id="status-text">HUNGER:</small>
+                <div ID="status-bar"><small>10</small></div> <!-- STATUS BAR GOES HERE --> 
+            </div>
+            <div id="status-box">
+                <small id="status-text">THIRST:</small>
+                <div ID="status-bar"><small>10</small></div>  <!-- STATUS BAR GOES HERE -->                 
+            </div>
+            <div id="status-box">
+                <small id="status-text">COMFORT:</small>
+                <div ID="status-bar"><small>10</small></div>  <!-- STATUS BAR GOES HERE -->                 
+            </div>
+            <div id="status-box">
+                <small id="status-text">SOCIAL:</small>
+                <div ID="status-bar"><small>10</small></div>  <!-- STATUS BAR GOES HERE -->                 
+            </div>
+            <div id="status-box">
+                <small id="status-text">HYGIENE:</small>
+                <div ID="status-bar"><small>10</small></div>  <!-- STATUS BAR GOES HERE -->                
+            </div>
         </div>
         <div id = "sloth-images">
             <img id = "backgroundImage" id = "jungle-background" src = "https://static.vecteezy.com/system/resources/previews/007/252/738/original/cartoon-forest-environment-background-free-vector.jpg">
