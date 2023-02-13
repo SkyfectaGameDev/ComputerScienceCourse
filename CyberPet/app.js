@@ -197,8 +197,9 @@ slothBtn.addEventListener("click", ()=> {
     backgrounds[0].style.display = "none"
     jungleBack.style.display = "block"
     slothStan.style.display = "block"
-    const yourPet = new sloth(`${givenName}`, `${givenTrait}`, "Sloth", 50, 20, 80, 50, 20, 00);
+    const yourPet = new sloth(`${givenName}`, `${givenTrait}`, "Sloth", 50, 50, 50, 50, 50, 50);
     updateStats(yourPet)
+    timingFunction(yourPet)
     })
 
 pengBtn.addEventListener("click", ()=> {
@@ -208,7 +209,8 @@ pengBtn.addEventListener("click", ()=> {
     snowBack.style.display = "block"
     pengSwing.style.display = "block"
     const yourPet = new penguin(`${givenName}`, `${givenTrait}`, "Penguin", 50, 50, 50, 50, 50, 50);
-    updateStats(yourPet) 
+    updateStats(yourPet)
+    timingFunction(yourPet) 
     })
 
 elephBtn.addEventListener("click", ()=> {
@@ -218,7 +220,8 @@ elephBtn.addEventListener("click", ()=> {
     desertBack.style.display = "block"
     elephStan.style.display = "block"
     const yourPet = new elephant(`${givenName}`, `${givenTrait}`, "Elephant", 50, 50, 50, 50, 50, 50);
-    updateStats(yourPet) 
+    updateStats(yourPet)
+    timingFunction(yourPet)
     })
 
 const updateStats = (yourPet) => {
@@ -358,5 +361,17 @@ const updateStats = (yourPet) => {
         // image of sad/angry pet shown
         // text box displays with "${this.firstname} is feeling neglected!"
     }
+}
 
+const timingFunction = (yourPet) => {
+    window.setTimeout(() => {
+        console.log(yourPet.hunger)
+        yourPet.hunger -= 2;
+        yourPet.thirst -= 2;
+        yourPet.comfort -= 2;
+        yourPet.social -= 2;
+        yourPet.hygiene -= 2;
+        updateStats(yourPet);
+        timingFunction(yourPet);
+    }, 2000);
 }
