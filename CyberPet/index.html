@@ -86,37 +86,46 @@
             <img class = "mainImage" id = "death" src = "https://media.tenor.com/c8LcrRJMk3EAAAAi/rip-tombstone.gif">
         </div>
         <div id="inputs">
-            <button class ="action-button">FEED</button>
-
-            <button class ="action-button" id = "dinner-button">Dinner</button>
-            <button class ="action-button" id = "healthy-button">Healthy</button>
-            <button class ="special-button" id = "spicy-tuna">Spicy Tuna Fish</button>
-            <button class ="special-button" id = "chilli-bowl">Chilli Bowl</button>
-            <button class ="special-button" id = "ice-lolly">Ice Lolly</button>
-
-            <button class ="action-button">CLEAN</button>
-
-            <button class ="action-button" id = "wash-button">Wash Pet</button>
-            <button class ="action-button" id = "groom-button">Groom Pet</button>
-            <button class ="special-button" id = "blow-dry">Blow Dry</button>
-            <button class ="special-button" id = "take-bath">Take Bath</button>
-            <button class ="special-button" id = "trim-claws">Trim Claws</button>
-
-            <button class ="action-button">INTERACT</button>
-
-            <button class ="action-button" id = "play-button">Play With Pet</button>
-            <button class ="action-button" id = "stroking-button">Stroke Pet</button>
-            <button class ="special-button" id = "teach-trick-dance">Teach to Dance</button>
-            <button class ="special-button" id = "teach-trick-balance">Teach to Balance</button>
-            <button class ="special-button" id = "teach-trick-disguise">Teach to Disguise</button>
-
-            <button class ="action-button">GIVE</button>
-
-            <button class ="action-button" id = "drink-button">Give Drink</button>
-            <button class ="action-button" id = "toy-button">Give Toy</button>
-            <button class ="special-button" id = "give-hat">Give Snoozing Hat</button>
-            <button class ="special-button" id = "give-troll">Give Troll Doll</button>
-            <button class ="special-button" id = "give-watch">Give Watch</button>
+            <div class = "dropdown">
+                <button class ="dropdown-button" id = feedBtn>FEED</button>
+                <div class = dropdown-content id = "feed-dropdown">
+                    <button class ="action-button" id = "dinner-button">Dinner</button>
+                    <button class ="action-button" id = "healthy-button">Healthy</button>
+                    <button class ="special-button" id = "spicy-tuna">Spicy Tuna Fish</button>
+                    <button class ="special-button" id = "chilli-bowl">Chilli Bowl</button>
+                    <button class ="special-button" id = "ice-lolly">Ice Lolly</button>
+                </div>
+            </div>
+            <div class = "dropdown">
+                <button class ="dropdown-button" id = cleanBtn>CLEAN</button>
+                <div class = dropdown-content id = "clean-dropdown">
+                    <button class ="action-button" id = "wash-button">Wash Pet</button>
+                    <button class ="action-button" id = "groom-button">Groom Pet</button>
+                    <button class ="special-button" id = "blow-dry">Blow Dry</button>
+                    <button class ="special-button" id = "take-bath">Take Bath</button>
+                    <button class ="special-button" id = "trim-claws">Trim Claws</button>
+                </div>
+            </div>
+            <div class = "dropdown">
+                <button class ="dropdown-button" id = interactBtn>INTERACT</button>
+                <div class = dropdown-content id = "interact-dropdown">
+                    <button class ="action-button" id = "play-button">Play With Pet</button>
+                    <button class ="action-button" id = "stroking-button">Stroke Pet</button>
+                    <button class ="special-button" id = "teach-trick-dance">Teach to Dance</button>
+                    <button class ="special-button" id = "teach-trick-balance">Teach to Balance</button>
+                    <button class ="special-button" id = "teach-trick-disguise">Teach to Disguise</button>
+                </div>
+            </div>
+            <div class = "dropdown">
+                <button class ="dropdown-button" id = giveBtn>GIVE</button>
+                <div class = dropdown-content id = "give-dropdown">
+                    <button class ="action-button" id = "drink-button">Give Drink</button>
+                    <button class ="action-button" id = "toy-button">Give Toy</button>
+                    <button class ="special-button" id = "give-hat">Give Snoozing Hat</button>
+                    <button class ="special-button" id = "give-troll">Give Troll Doll</button>
+                    <button class ="special-button" id = "give-watch">Give Watch</button>
+                </div>
+            </div>
         </div>
     </div>
 

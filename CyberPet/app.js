@@ -12,6 +12,18 @@ const slothBtn = document.getElementById("sloth-start")
 const pengBtn = document.getElementById("peng-start")
 const elephBtn = document.getElementById("eleph-start")
 
+// ------- Dropdown Buttons -----------------
+
+const feedBtn = document.getElementById("feedBtn")
+const cleanBtn = document.getElementById("cleanBtn")
+const interactBtn = document.getElementById("interactBtn")
+const giveBtn = document.getElementById("giveBtn")
+
+const feedDropMenu = document.getElementById("feed-dropdown")
+const cleanDropMenu = document.getElementById("clean-dropdown")
+const interactDropMenu = document.getElementById("interact-dropdown")
+const giveDropMenu = document.getElementById("give-dropdown")
+
 // ------- Action Buttons -----------------
 
 const dinnerBtn = document.getElementById("dinner-button")
@@ -445,6 +457,40 @@ resetBtn.addEventListener("click", ()=> {
     gameReset = true;
 })
 
+// -------------------------------- dropdown button presses ------------------------
+
+window.onclick = function(event) {
+    if (!event.target.matches('.dropdown-button')) {
+        feedDropMenu.style.display = "none"
+        cleanDropMenu.style.display = "none"
+        interactDropMenu.style.display = "none"
+        giveDropMenu.style.display = "none"
+    }
+}
+
+feedBtn.addEventListener("mouseover", ()=> {
+    if(feedDropMenu.style.display == "block") {
+    feedDropMenu.style.display = "none"}
+    else {feedDropMenu.style.display = "block"}
+})
+
+cleanBtn.addEventListener("mouseover", ()=> {
+    if(cleanDropMenu.style.display == "block") {
+    cleanDropMenu.style.display = "none"}
+    else {cleanDropMenu.style.display = "block"}
+})
+
+interactBtn.addEventListener("mouseover", ()=> {
+    if(interactDropMenu.style.display == "block") {
+    interactDropMenu.style.display = "none"}
+    else {interactDropMenu.style.display = "block"}
+})
+
+giveBtn.addEventListener("mouseover", ()=> {
+    if(giveDropMenu.style.display == "block") {
+    giveDropMenu.style.display = "none"}
+    else {giveDropMenu.style.display = "block"}
+})
 
 // -------------------------------- action button presses ------------------------------------------------------------------------
 
