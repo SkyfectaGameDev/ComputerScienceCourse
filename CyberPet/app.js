@@ -4,6 +4,12 @@ const textInputBox = document.getElementById("text-input")
 const instruct = document.getElementById("instructor")
 const startInstruc = document.getElementById("starting-instructions")
 
+// ----- Pet Text ------------
+
+const petName = document.getElementById("pet-name")
+const petAge = document.getElementById("pet-age")
+const petTrait = document.getElementById("pet-trait")
+
 // ----- Buttons ------------
 
 const specialBtns = document.getElementsByClassName("special-button")
@@ -102,7 +108,8 @@ let givenTrait = ""
 let yourPet = {}
 let petLiving = false
 let gameReset = true
-const unpressable = [false, false]
+const unpressable = [false, false, false, false, false, false, false, false]
+let specialBtnPressed = false
 
 class Pet {                     // creates our pet class with standard action functions
     constructor(firstName, trait, type, health, hunger, thirst, comfort, social, hygiene) {
@@ -385,6 +392,9 @@ slothBtn.addEventListener("click", ()=> {
     yourPet = new sloth(`${givenName}`, `${givenTrait}`, "Sloth", 50, 50, 50, 50, 50, 50);
     petLiving = true
     gameReset = false
+    petName.textContent = yourPet.firstName
+    petAge.textContent = `0 Days Old`
+    petTrait.textContent = yourPet.trait
 
     iceLollyBtn.style.display = "block"    // puts the special buttons for the sloth back in
     trimClawsBtn.style.display = "block"
@@ -457,6 +467,8 @@ resetBtn.addEventListener("click", ()=> {
     gameReset = true;
 })
 
+
+
 // -------------------------------- dropdown button presses ------------------------
 
 window.onclick = function(event) {
@@ -492,9 +504,25 @@ giveBtn.addEventListener("mouseover", ()=> {
     else {giveDropMenu.style.display = "block"}
 })
 
-// -------------------------------- action button presses ------------------------------------------------------------------------
 
 
+
+// -------------------------------- action button presses --------------------------
+
+   // original one, delete if the rest work
+// dinnerBtn.addEventListener("click", ()=> {
+//     if (unpressable[0] == false) {
+//         unpressable[0] = true
+//         yourPet.feedPetMain();                  // runs action funtion
+//         updateStats(yourPet);                   // updates stat changes on screen
+//         actionText.textContent = `You fed ${yourPet.firstName} a large meal `      // Updates action text on screen
+//         dinnerBtn.style.backgroundColor = "Red"
+//         window.setTimeout(() => {
+//             dinnerBtn.style.backgroundColor = "White" 
+//             unpressable[0] = false
+//             }, 5000); 
+//     }   
+// })
 dinnerBtn.addEventListener("click", ()=> {
     if (unpressable[0] == false) {
         unpressable[0] = true
@@ -510,68 +538,320 @@ dinnerBtn.addEventListener("click", ()=> {
 })
 
 healthyBtn.addEventListener("click", ()=> {
-    yourPet.feedPetHealthy();                  // runs action funtion
-    updateStats(yourPet);                   // updates stat changes on screen
-    actionText.textContent = `You fed ${yourPet.firstName} a healthy meal `      // Updates action text on screen
+    if (unpressable[1] == false) {
+        unpressable[1] = true
+        yourPet.feedPetHealthy();                  // runs action funtion
+        updateStats(yourPet);                   // updates stat changes on screen
+        actionText.textContent = `You fed ${yourPet.firstName} a healthy meal `      // Updates action text on screen
+        healthyBtn.style.backgroundColor = "Red"
+        window.setTimeout(() => {
+            healthyBtn.style.backgroundColor = "White" 
+            unpressable[1] = false
+            }, 5000);
+    }
 })
 
+
 washBtn.addEventListener("click", ()=> {
-    yourPet.washPet();                  // runs action funtion
-    updateStats(yourPet);                   // updates stat changes on screen
-    actionText.textContent = `You washed ${yourPet.firstName} `      // Updates action text on screen
-}) 
+    if (unpressable[2] == false) {
+        unpressable[2] = true
+        yourPet.washPet();                  // runs action funtion
+        updateStats(yourPet);                   // updates stat changes on screen
+        actionText.textContent = `You washed ${yourPet.firstName} `      // Updates action text on screen
+        washBtn.style.backgroundColor = "Red"
+        window.setTimeout(() => {
+            washBtn.style.backgroundColor = "White" 
+            unpressable[2] = false
+            }, 5000); 
+    }
+})
 
 groomBtn.addEventListener("click", ()=> {
-    yourPet.groomPet();                  // runs action funtion
-    updateStats(yourPet);                   // updates stat changes on screen
-    actionText.textContent = `You groomed ${yourPet.firstName} `      // Updates action text on screen
+    if (unpressable[3] == false) {
+        unpressable[3] = true
+        yourPet.groomPet();                  // runs action funtion
+        updateStats(yourPet);                   // updates stat changes on screen
+        actionText.textContent = `You groomed ${yourPet.firstName} `      // Updates action text on screen
+        groomBtn.style.backgroundColor = "Red"
+        window.setTimeout(() => {
+            groomBtn.style.backgroundColor = "White" 
+            unpressable[3] = false
+            }, 5000); 
+    }
 })
 
 playBtn.addEventListener("click", ()=> {
-    yourPet.playWithPet();                  // runs action funtion
-    updateStats(yourPet);                   // updates stat changes on screen
-    actionText.textContent = `You played with ${yourPet.firstName} `      // Updates action text on screen
+    if (unpressable[4] == false) {
+        unpressable[4] = true
+        yourPet.playWithPet();                  // runs action funtion
+        updateStats(yourPet);                   // updates stat changes on screen
+        actionText.textContent = `You played with ${yourPet.firstName} `      // Updates action text on screen
+        playBtn.style.backgroundColor = "Red"
+        window.setTimeout(() => {
+            playBtn.style.backgroundColor = "White" 
+            unpressable[4] = false
+            }, 5000); 
+    }
 }) 
 
 strokeBtn.addEventListener("click", ()=> {
-    yourPet.petAnimal();                  // runs action funtion
-    updateStats(yourPet);                   // updates stat changes on screen
-    actionText.textContent = `You petted ${yourPet.firstName} `      // Updates action text on screen
+    if (unpressable[5] == false) {
+        unpressable[5] = true
+        yourPet.petAnimal();                  // runs action funtion
+        updateStats(yourPet);                   // updates stat changes on screen
+        actionText.textContent = `You petted ${yourPet.firstName} `      // Updates action text on screen
+        strokeBtn.style.backgroundColor = "Red"
+        window.setTimeout(() => {
+            strokeBtn.style.backgroundColor = "White" 
+            unpressable[5] = false
+            }, 5000); 
+    }
 }) 
 
 drinkBtn.addEventListener("click", ()=> {
-    yourPet.givePetDrink();                  // runs action funtion
-    updateStats(yourPet);                   // updates stat changes on screen
-    actionText.textContent = `You gave ${yourPet.firstName} a large drink `      // Updates action text on screen
+    if (unpressable[6] == false) {
+        unpressable[6] = true
+        yourPet.givePetDrink();                  // runs action funtion
+        updateStats(yourPet);                   // updates stat changes on screen
+        actionText.textContent = `You gave ${yourPet.firstName} a large drink `      // Updates action text on screen
+        drinkBtn.style.backgroundColor = "Red"
+        window.setTimeout(() => {
+            drinkBtn.style.backgroundColor = "White" 
+            unpressable[6] = false
+            }, 5000); 
+    }
 }) 
 
 toyBtn.addEventListener("click", ()=> {
-    yourPet.givePetToy();                  // runs action funtion
-    updateStats(yourPet);                   // updates stat changes on screen
-    actionText.textContent = `You gave ${yourPet.firstName} a little toy `      // Updates action text on screen
-}) 
+    if (unpressable[7] == false) {
+        unpressable[7] = true
+        yourPet.givePetToy();                  // runs action funtion
+        updateStats(yourPet);                   // updates stat changes on screen
+        actionText.textContent = `You gave ${yourPet.firstName} a little toy `      // Updates action text on screen
+        toyBtn.style.backgroundColor = "Red"
+        window.setTimeout(() => {
+            toyBtn.style.backgroundColor = "White" 
+            unpressable[7] = false
+            }, 5000); 
+    }
+})
 
 
 
 // ---------------- special button presses ---------------------------------------
 
 // Sloth ---------------
+                                                    // Original delete if all okay
+// iceLollyBtn.addEventListener("click", ()=> {
+//     specialBtnPressed = true                    // sets special button pressed to true to block other images coming over the top
+//     yourPet.feedIceLolly();                     // runs action funtion
+//     updateStats(yourPet);                       // updates stat changes on screen
+//     actionText.textContent = `You gave ${yourPet.firstName} an ice lolly `      // Updates action text on screen
+//     petImages[1].style.display = "none" 
+//     petImages[3].style.display = "none" 
+//     petImages[2].style.display = "none"              // turns off the standard image 
+//     petImages[4].style.display = "block"              // turns on the corresponding image         
+//     window.setTimeout(() => {
+//     petImages[4].style.display = "none"         // turns the image off after a time delay
+//     // petImages[2].style.display = "block"              // turns on the standard image after a time delay
+//     specialBtnPressed = false                   // returns special button pressed to false so that other images may resume
+//     updateEmote(yourPet)
+//     }, 4000);
+//     })
 
 iceLollyBtn.addEventListener("click", ()=> {
+    specialBtnPressed = true                    // sets special button pressed to true to block other images coming over the top
     yourPet.feedIceLolly();                     // runs action funtion
     updateStats(yourPet);                       // updates stat changes on screen
+    actionText.textContent = `You gave ${yourPet.firstName} an ice lolly `      // Updates action text on screen
+    petImages[1].style.display = "none" 
+    petImages[3].style.display = "none" 
     petImages[2].style.display = "none"              // turns off the standard image 
     petImages[4].style.display = "block"              // turns on the corresponding image         
     window.setTimeout(() => {
     petImages[4].style.display = "none"         // turns the image off after a time delay
-    petImages[2].style.display = "block"              // turns onn the standard image after a time delay
+    specialBtnPressed = false                   // returns special button pressed to false so that other images may resume
+    updateEmote(yourPet)
     }, 4000);
     })
 
+trimClawsBtn.addEventListener("click", ()=> {
+    specialBtnPressed = true                    // sets special button pressed to true to block other images coming over the top
+    yourPet.trimClaws();                     // runs action funtion
+    updateStats(yourPet);                       // updates stat changes on screen
+    actionText.textContent = `You trim ${yourPet.firstName} claws `      // Updates action text on screen
+    petImages[1].style.display = "none" 
+    petImages[3].style.display = "none" 
+    petImages[2].style.display = "none"              // turns off the standard image 
+    petImages[5].style.display = "block"              // turns on the corresponding image         
+    window.setTimeout(() => {
+    petImages[5].style.display = "none"         // turns the image off after a time delay
+    specialBtnPressed = false                   // returns special button pressed to false so that other images may resume
+    updateEmote(yourPet)
+    }, 4000);
+    })
 
-// const happynessCheck = (yourPet) => {
+teachDisgBtn.addEventListener("click", ()=> {
+    specialBtnPressed = true                    // sets special button pressed to true to block other images coming over the top
+    yourPet.teachTrickDisguise();                     // runs action funtion
+    updateStats(yourPet);                       // updates stat changes on screen
+    actionText.textContent = `You teach ${yourPet.firstName} how to disguise `      // Updates action text on screen
+    petImages[1].style.display = "none" 
+    petImages[3].style.display = "none" 
+    petImages[2].style.display = "none"              // turns off the standard image 
+    petImages[6].style.display = "block"              // turns on the corresponding image         
+    window.setTimeout(() => {
+    petImages[6].style.display = "none"         // turns the image off after a time delay
+    specialBtnPressed = false                   // returns special button pressed to false so that other images may resume
+    updateEmote(yourPet)
+    }, 4000);
+    })
+           
+giveWatch.addEventListener("click", ()=> {
+    specialBtnPressed = true                    // sets special button pressed to true to block other images coming over the top
+    yourPet.giveWatch();                     // runs action funtion
+    updateStats(yourPet);                       // updates stat changes on screen
+    actionText.textContent = `You give ${yourPet.firstName} a watch `      // Updates action text on screen
+    petImages[1].style.display = "none" 
+    petImages[3].style.display = "none" 
+    petImages[2].style.display = "none"              // turns off the standard image 
+    petImages[7].style.display = "block"              // turns on the corresponding image         
+    window.setTimeout(() => {
+    petImages[7].style.display = "none"         // turns the image off after a time delay
+    specialBtnPressed = false                   // returns special button pressed to false so that other images may resume
+    updateEmote(yourPet)
+    }, 4000);
+    })
 
-// }
+spicyTunaBtn.addEventListener("click", ()=> {
+    specialBtnPressed = true                    // sets special button pressed to true to block other images coming over the top
+    yourPet.feedSpicyTunaFish();                     // runs action funtion
+    updateStats(yourPet);                       // updates stat changes on screen
+    actionText.textContent = `You give ${yourPet.firstName} a spicy tuna fish `      // Updates action text on screen
+    petImages[12].style.display = "none" 
+    petImages[10].style.display = "none" 
+    petImages[8].style.display = "none"              // turns off the standard image 
+    petImages[9].style.display = "block"              // turns on the corresponding image         
+    window.setTimeout(() => {
+    petImages[9].style.display = "none"         // turns the image off after a time delay
+    specialBtnPressed = false                   // returns special button pressed to false so that other images may resume
+    updateEmote(yourPet)
+    }, 4000);
+    })    
+                    
+blowDryBtn.addEventListener("click", ()=> {
+    specialBtnPressed = true                    // sets special button pressed to true to block other images coming over the top
+    yourPet.blowDry();                     // runs action funtion
+    updateStats(yourPet);                       // updates stat changes on screen
+    actionText.textContent = `You blow dry ${yourPet.firstName}  `      // Updates action text on screen
+    petImages[12].style.display = "none" 
+    petImages[10].style.display = "none" 
+    petImages[8].style.display = "none"               // turns off the standard image 
+    petImages[14].style.display = "block"              // turns on the corresponding image         
+    window.setTimeout(() => {
+    petImages[14].style.display = "none"         // turns the image off after a time delay
+    specialBtnPressed = false                   // returns special button pressed to false so that other images may resume
+    updateEmote(yourPet)
+    }, 4000);
+    })   
+
+
+danceBtn.addEventListener("click", ()=> {
+    specialBtnPressed = true                    // sets special button pressed to true to block other images coming over the top
+    yourPet.teachTrickDance();                     // runs action funtion
+    updateStats(yourPet);                       // updates stat changes on screen
+    actionText.textContent = `You teach ${yourPet.firstName} how to dance! `      // Updates action text on screen
+    petImages[12].style.display = "none" 
+    petImages[10].style.display = "none" 
+    petImages[8].style.display = "none"               // turns off the standard image 
+    petImages[13].style.display = "block"              // turns on the corresponding image         
+    window.setTimeout(() => {
+    petImages[13].style.display = "none"         // turns the image off after a time delay
+    specialBtnPressed = false                   // returns special button pressed to false so that other images may resume
+    updateEmote(yourPet)
+    }, 4000);
+    })  
+
+giveHatBtn.addEventListener("click", ()=> {
+    specialBtnPressed = true                    // sets special button pressed to true to block other images coming over the top
+    yourPet.giveSnoozingHat();                     // runs action funtion
+    updateStats(yourPet);                       // updates stat changes on screen
+    actionText.textContent = `You give ${yourPet.firstName} a comfy hat `      // Updates action text on screen
+    petImages[12].style.display = "none" 
+    petImages[10].style.display = "none" 
+    petImages[8].style.display = "none"               // turns off the standard image 
+    petImages[11].style.display = "block"              // turns on the corresponding image         
+    window.setTimeout(() => {
+    petImages[11].style.display = "none"         // turns the image off after a time delay
+    specialBtnPressed = false                   // returns special button pressed to false so that other images may resume
+    updateEmote(yourPet)
+    }, 4000);
+    })     
+                    
+chilliBowlBtn.addEventListener("click", ()=> {
+    specialBtnPressed = true                    // sets special button pressed to true to block other images coming over the top
+    yourPet.feedChilli();                     // runs action funtion
+    updateStats(yourPet);                       // updates stat changes on screen
+    actionText.textContent = `You give ${yourPet.firstName} a bowl of chilli `      // Updates action text on screen
+    petImages[15].style.display = "none" 
+    petImages[16].style.display = "none" 
+    petImages[18].style.display = "none"               // turns off the standard image 
+    petImages[19].style.display = "block"              // turns on the corresponding image         
+    window.setTimeout(() => {
+    petImages[19].style.display = "none"         // turns the image off after a time delay
+    specialBtnPressed = false                   // returns special button pressed to false so that other images may resume
+    updateEmote(yourPet)
+    }, 4000);
+    }) 
+
+takeBathBtn.addEventListener("click", ()=> {
+    specialBtnPressed = true                    // sets special button pressed to true to block other images coming over the top
+    yourPet.takeBath();                     // runs action funtion
+    updateStats(yourPet);                       // updates stat changes on screen
+    actionText.textContent = `You give ${yourPet.firstName} a nice warm bath `      // Updates action text on screen
+    petImages[15].style.display = "none" 
+    petImages[16].style.display = "none" 
+    petImages[18].style.display = "none"               // turns off the standard image 
+    petImages[20].style.display = "block"              // turns on the corresponding image         
+    window.setTimeout(() => {
+    petImages[20].style.display = "none"         // turns the image off after a time delay
+    specialBtnPressed = false                   // returns special button pressed to false so that other images may resume
+    updateEmote(yourPet)
+    }, 4000);
+    }) 
+
+balanceBtn.addEventListener("click", ()=> {
+    specialBtnPressed = true                    // sets special button pressed to true to block other images coming over the top
+    yourPet.teachTrickBalance();                     // runs action funtion
+    updateStats(yourPet);                       // updates stat changes on screen
+    actionText.textContent = `You teach ${yourPet.firstName} how to balance! `      // Updates action text on screen
+    petImages[15].style.display = "none" 
+    petImages[16].style.display = "none" 
+    petImages[18].style.display = "none"               // turns off the standard image 
+    petImages[21].style.display = "block"              // turns on the corresponding image         
+    window.setTimeout(() => {
+    petImages[21].style.display = "none"         // turns the image off after a time delay
+    specialBtnPressed = false                   // returns special button pressed to false so that other images may resume
+    updateEmote(yourPet)
+    }, 4000);
+    }) 
+
+giveTrollBtn.addEventListener("click", ()=> {
+    specialBtnPressed = true                    // sets special button pressed to true to block other images coming over the top
+    yourPet.giveTrollDoll();                     // runs action funtion
+    updateStats(yourPet);                       // updates stat changes on screen
+    actionText.textContent = `You give ${yourPet.firstName} a troll doll to play with! `      // Updates action text on screen
+    petImages[15].style.display = "none" 
+    petImages[16].style.display = "none" 
+    petImages[18].style.display = "none"               // turns off the standard image 
+    petImages[17].style.display = "block"              // turns on the corresponding image         
+    window.setTimeout(() => {
+    petImages[17].style.display = "none"         // turns the image off after a time delay
+    specialBtnPressed = false                   // returns special button pressed to false so that other images may resume
+    updateEmote(yourPet)
+    }, 4000);
+    }) 
+
 
 const updateStats = (yourPet) => {
     if (petLiving == true) {
@@ -674,45 +954,66 @@ const updateStatBars = (yourPet) => {    // alters the length and colour of the 
 }
 
 const updateEmote = (yourPet) => {              // changes the image of your pet based on its happiness value
-    if (yourPet.health == 0) {
-        petLiving = false
-        emoteText.textContent = `${yourPet.firstName} has passed away `;
-        petImages[1].style.display = "none";
-        petImages[12].style.display = "none";
-        petImages[15].style.display = "none";
-        petImages[22].style.display = "block";
+    if (specialBtnPressed == false) {
+        if (yourPet.health == 0) {
+            petLiving = false
+            emoteText.textContent = `${yourPet.firstName} has passed away `;
+            petImages[1].style.display = "none";
+            petImages[12].style.display = "none";
+            petImages[15].style.display = "none";
+            petImages[22].style.display = "block";
+        }
+        else if (yourPet.health >= 75) {
+            emoteText.textContent = `${yourPet.firstName} is happy `;
+            if (yourPet.type == "Sloth") {
+                petImages[2].style.display = "none";
+                petImages[3].style.display = "block";
+            }
+            else if (yourPet.type == "Penguin") {
+                petImages[8].style.display = "none";
+                petImages[10].style.display = "block";
+            }
+            else if (yourPet.type == "Elephant") {
+                petImages[16].style.display = "none";
+                petImages[18].style.display = "block";
+            }
+        }
+        else if (yourPet.health < 35) {
+            emoteText.textContent = `${yourPet.firstName} is feeling neglected `;
+            if (yourPet.type == "Sloth") {
+                petImages[2].style.display = "none";
+                petImages[1].style.display = "block";
+            }
+            else if (yourPet.type == "Penguin") {
+                petImages[8].style.display = "none";
+                petImages[12].style.display = "block";
+            }
+            else if (yourPet.type == "Elephant") {
+                petImages[16].style.display = "none";
+                petImages[15].style.display = "block";
+            }
+        }
+        else {
+            emoteText.textContent = `${yourPet.firstName} is doing okay `;
+            if (yourPet.type == "Sloth") {
+                petImages[1].style.display = "none";
+                petImages[3].style.display = "none";
+                petImages[2].style.display = "block";
+            }
+            else if (yourPet.type == "Penguin") {
+                petImages[12].style.display = "none";
+                petImages[10].style.display = "none";
+                petImages[8].style.display = "block";
+                
+            }
+            else if (yourPet.type == "Elephant") {
+                petImages[15].style.display = "none";
+                petImages[18].style.display = "none";
+                petImages[16].style.display = "block";  
+            }
+        }
     }
-    else if (yourPet.health >= 75) {
-        emoteText.textContent = `${yourPet.firstName} is happy `;
-        if (yourPet.type == "Sloth") {
-            petImages[2].style.display = "none";
-            petImages[3].style.display = "block";
-        }
-        else if (yourPet.type == "Penguin") {
-            petImages[8].style.display = "none";
-            petImages[10].style.display = "block";
-        }
-        else if (yourPet.type == "Elephant") {
-            petImages[16].style.display = "none";
-            petImages[18].style.display = "block";
-        }
-    }
-    else if (yourPet.health < 35) {
-        emoteText.textContent = `${yourPet.firstName} is feeling neglected `;
-        if (yourPet.type == "Sloth") {
-            petImages[2].style.display = "none";
-            petImages[1].style.display = "block";
-        }
-        else if (yourPet.type == "Penguin") {
-            petImages[8].style.display = "none";
-            petImages[12].style.display = "block";
-        }
-        else if (yourPet.type == "Elephant") {
-            petImages[16].style.display = "none";
-            petImages[15].style.display = "block";
-        }
-    }
-    else if (yourPet.hunger < 35) {                                         // displays text if an individual stat is low
+    if (yourPet.hunger < 35) {                                         // displays text if an individual stat is low
         emoteText.textContent = `${yourPet.firstName} is starving `;
     }
     else if (yourPet.thirst < 35) {
@@ -726,25 +1027,6 @@ const updateEmote = (yourPet) => {              // changes the image of your pet
     }
     else if (yourPet.comfort < 35) {
         emoteText.textContent = `${yourPet.firstName} is uncomfortable `;
-    }
-    else {
-        emoteText.textContent = `${yourPet.firstName} is doing okay `;
-        if (yourPet.type == "Sloth") {
-            petImages[1].style.display = "none";
-            petImages[3].style.display = "none";
-            petImages[2].style.display = "block";
-        }
-        else if (yourPet.type == "Penguin") {
-            petImages[12].style.display = "none";
-            petImages[10].style.display = "none";
-            petImages[8].style.display = "block";
-            
-        }
-        else if (yourPet.type == "Elephant") {
-            petImages[15].style.display = "none";
-            petImages[18].style.display = "none";
-            petImages[16].style.display = "block";  
-        }
     }
 }
 
