@@ -7,7 +7,7 @@ const startInstruc = document.getElementById("starting-instructions")
 // ----- Pet Text ------------
 
 const petName = document.getElementById("pet-name")
-const petAge = document.getElementById("pet-age")
+const petAgeText = document.getElementById("pet-age")
 const petTrait = document.getElementById("pet-trait")
 
 // ----- Buttons ------------
@@ -62,6 +62,8 @@ const giveTrollBtn = document.getElementById("give-troll")
 
 const emoteText = document.getElementById("pet-emote")
 const actionText = document.getElementById("pet-action")
+const ripText = document.getElementById("pet-rip")
+
 
 const healthNum = document.getElementById("status-health")
 const hungerNum = document.getElementById("status-hunger")
@@ -101,7 +103,7 @@ for (x=0; x < specialBtns.length; x++) {            // Turns off all special but
     specialBtns[x].style.display = "none"
 }
 
-const traits = ["Shy", "Greedy", "Playful", "Calm", "Lazy", "Messy"]      // a list of possible traits our pet might have
+const traits = ["Restless", "Greedy", "Playful", "Calm", "Lazy", "Messy"]      // a list of possible traits our pet might have
 
 let givenName = ""                  // sets up a few empty variables that are used later on for scope purposes
 let givenTrait = ""
@@ -112,9 +114,10 @@ const unpressable = [false, false, false, false, false, false, false, false]
 let specialBtnPressed = false
 
 class Pet {                     // creates our pet class with standard action functions
-    constructor(firstName, trait, type, health, hunger, thirst, comfort, social, hygiene) {
+    constructor(firstName, trait, age, type, health, hunger, thirst, comfort, social, hygiene) {
     this.firstName = firstName;
     this.trait = trait;
+    this.age = age;
     this.type = type;
     this.health = health
     this.hunger = hunger;
@@ -224,8 +227,8 @@ class Pet {                     // creates our pet class with standard action fu
 }
 
 class penguin extends Pet {                   // creates our penguin sub class with special action functions
-    constructor(firstName, trait, type, health, hunger, thirst, comfort, social, hygiene) {
-    super(firstName, trait, type, health, hunger, thirst, comfort, social, hygiene) ;
+    constructor(firstName, trait, age, type, health, hunger, thirst, comfort, social, hygiene) {
+    super(firstName, trait, age, type, health, hunger, thirst, comfort, social, hygiene) ;
     }
     giveSnoozingHat () {
     this.social += 10;
@@ -274,8 +277,8 @@ class penguin extends Pet {                   // creates our penguin sub class w
 }
 
 class sloth extends Pet {                        // creates our sloth sub class with special action functions
-    constructor(firstName, trait, type, health, hunger, thirst, comfort, social, hygiene) {
-    super(firstName, trait, type, health, hunger, thirst, comfort, social, hygiene) ;
+    constructor(firstName, trait, age, type, health, hunger, thirst, comfort, social, hygiene) {
+    super(firstName, trait, age, type, health, hunger, thirst, comfort, social, hygiene) ;
     }
     trimClaws () {
     this.hygiene += 15;
@@ -325,8 +328,8 @@ class sloth extends Pet {                        // creates our sloth sub class 
 
 
 class elephant extends Pet {                         // creates our elephant sub class with special action functions
-    constructor(firstName, trait, type, health, hunger, thirst, comfort, social, hygiene) {
-    super(firstName, trait, type, health, hunger, thirst, comfort, social, hygiene) ;
+    constructor(firstName, trait, age, type, health, hunger, thirst, comfort, social, hygiene) {
+    super(firstName, trait, age, type, health, hunger, thirst, comfort, social, hygiene) ;
     }
     giveTrollDoll () {
     this.social += 30;
@@ -374,7 +377,7 @@ class elephant extends Pet {                         // creates our elephant sub
 
 newGameBtn.addEventListener("click", ()=> {                     // start button code
     if (petLiving == false && gameReset == true) {          // only works if there is no pet and the game has been reset
-    startInstruc.style.display = "block";                   // reveals the input text box and the 3 starter buttons
+    startInstruc.style.display = "flex";                   // reveals the input text box and the 3 starter buttons
     textInputBox.value = "";
     instruct.textContent = "Please enter a name for your pet, and then select a pet from the 3 options below. ";
     }
@@ -382,6 +385,13 @@ newGameBtn.addEventListener("click", ()=> {                     // start button 
 
 slothBtn.addEventListener("click", ()=> {
     givenName = textInputBox.value;
+    if (givenName.length == 0) {
+        instruct.textContent = "You must enter a name for your pet. ";  
+    }
+    else if (givenName.length > 12) {
+        instruct.textContent = "Your pet name cannot be more than 12 characters. "; 
+    }
+    else{
     givenTrait = traits[(Math.floor(Math.random() * 6))]
     console.log(givenName)
     startInstruc.style.display = "none"
@@ -389,11 +399,11 @@ slothBtn.addEventListener("click", ()=> {
     backgrounds[0].style.display = "none"
     jungleBack.style.display = "block"
     petImages[2].style.display = "block"
-    yourPet = new sloth(`${givenName}`, `${givenTrait}`, "Sloth", 50, 50, 50, 50, 50, 50);
+    yourPet = new sloth(`${givenName}`, `${givenTrait}`, 0, "Sloth", 50, 50, 50, 50, 50, 50);
     petLiving = true
     gameReset = false
     petName.textContent = yourPet.firstName
-    petAge.textContent = `0 Days Old`
+    petAgeText.textContent = `0 Days Old`
     petTrait.textContent = yourPet.trait
 
     iceLollyBtn.style.display = "block"    // puts the special buttons for the sloth back in
@@ -403,19 +413,29 @@ slothBtn.addEventListener("click", ()=> {
 
     updateStats(yourPet);
     timingFunction(yourPet);
-    })
+    }})
 
 pengBtn.addEventListener("click", ()=> {
     givenName = textInputBox.value;
+    if (givenName.length == 0) {
+        instruct.textContent = "You must enter a name for your pet. ";  
+    }
+    else if (givenName.length > 12) {
+        instruct.textContent = "Your pet name cannot be more than 12 characters. "; 
+    }
+    else{
     givenTrait = traits[(Math.floor(Math.random() * 6))]
     startInstruc.style.display = "none"
     petImages[0].style.display = "none"
     backgrounds[0].style.display = "none"
     snowBack.style.display = "block"
     petImages[8].style.display = "block"
-    yourPet = new penguin(`${givenName}`, `${givenTrait}`, "Penguin", 50, 50, 50, 50, 50, 50);
+    yourPet = new penguin(`${givenName}`, `${givenTrait}`, 0, "Penguin", 50, 50, 50, 50, 50, 50);
     petLiving = true
     gameReset = false
+    petName.textContent = yourPet.firstName
+    petAgeText.textContent = `0 Days Old`
+    petTrait.textContent = yourPet.trait
 
     spicyTunaBtn.style.display = "block"    // puts the special buttons for the penguin back in
     blowDryBtn.style.display = "block"
@@ -424,19 +444,29 @@ pengBtn.addEventListener("click", ()=> {
 
     updateStats(yourPet) 
     timingFunction(yourPet);
-    })
+    }})
 
 elephBtn.addEventListener("click", ()=> {
     givenName = textInputBox.value;
+    if (givenName.length == 0) {
+        instruct.textContent = "You must enter a name for your pet. ";  
+    }
+    else if (givenName.length > 12) {
+        instruct.textContent = "Your pet name cannot be more than 12 characters. "; 
+    }
+    else{
     givenTrait = traits[(Math.floor(Math.random() * 6))]
     startInstruc.style.display = "none"
     petImages[0].style.display = "none"
     backgrounds[0].style.display = "none"
     desertBack.style.display = "block"
     petImages[16].style.display = "block"
-    yourPet = new elephant(`${givenName}`, `${givenTrait}`, "Elephant", 50, 50, 50, 50, 50, 50);
+    yourPet = new elephant(`${givenName}`, `${givenTrait}`, 0, "Elephant", 50, 50, 50, 50, 50, 50);
     petLiving = true
     gameReset = false
+    petName.textContent = yourPet.firstName
+    petAgeText.textContent = `0 Days Old`
+    petTrait.textContent = yourPet.trait
 
     chilliBowlBtn.style.display = "block"    // puts the special buttons for the elephant back in
     takeBathBtn.style.display = "block"
@@ -445,7 +475,7 @@ elephBtn.addEventListener("click", ()=> {
 
     updateStats(yourPet) 
     timingFunction(yourPet);
-    })
+    }})
 
 resetBtn.addEventListener("click", ()=> {
     for (x=0; x < backgrounds.length; x++) {
@@ -460,6 +490,9 @@ resetBtn.addEventListener("click", ()=> {
     backgrounds[0].style.display = "block";
     petImages[0].style.display = "block";
     emoteText.textContent = "A new egg is hatching ";
+    actionText.textContent = "";
+    ripText.style.display = "none";
+    ripText.textContent = "";
     givenName = "";
     givenTrait = "";
     yourPet = {};
@@ -467,7 +500,9 @@ resetBtn.addEventListener("click", ()=> {
     gameReset = true;
 })
 
-
+// const petName = document.getElementById("pet-name")
+// const petAgeText = document.getElementById("pet-age")
+// const petTrait = document.getElementById("pet-trait")
 
 // -------------------------------- dropdown button presses ------------------------
 
@@ -509,20 +544,6 @@ giveBtn.addEventListener("mouseover", ()=> {
 
 // -------------------------------- action button presses --------------------------
 
-   // original one, delete if the rest work
-// dinnerBtn.addEventListener("click", ()=> {
-//     if (unpressable[0] == false) {
-//         unpressable[0] = true
-//         yourPet.feedPetMain();                  // runs action funtion
-//         updateStats(yourPet);                   // updates stat changes on screen
-//         actionText.textContent = `You fed ${yourPet.firstName} a large meal `      // Updates action text on screen
-//         dinnerBtn.style.backgroundColor = "Red"
-//         window.setTimeout(() => {
-//             dinnerBtn.style.backgroundColor = "White" 
-//             unpressable[0] = false
-//             }, 5000); 
-//     }   
-// })
 dinnerBtn.addEventListener("click", ()=> {
     if (unpressable[0] == false) {
         unpressable[0] = true
@@ -641,25 +662,9 @@ toyBtn.addEventListener("click", ()=> {
 // ---------------- special button presses ---------------------------------------
 
 // Sloth ---------------
-                                                    // Original delete if all okay
-// iceLollyBtn.addEventListener("click", ()=> {
-//     specialBtnPressed = true                    // sets special button pressed to true to block other images coming over the top
-//     yourPet.feedIceLolly();                     // runs action funtion
-//     updateStats(yourPet);                       // updates stat changes on screen
-//     actionText.textContent = `You gave ${yourPet.firstName} an ice lolly `      // Updates action text on screen
-//     petImages[1].style.display = "none" 
-//     petImages[3].style.display = "none" 
-//     petImages[2].style.display = "none"              // turns off the standard image 
-//     petImages[4].style.display = "block"              // turns on the corresponding image         
-//     window.setTimeout(() => {
-//     petImages[4].style.display = "none"         // turns the image off after a time delay
-//     // petImages[2].style.display = "block"              // turns on the standard image after a time delay
-//     specialBtnPressed = false                   // returns special button pressed to false so that other images may resume
-//     updateEmote(yourPet)
-//     }, 4000);
-//     })
 
 iceLollyBtn.addEventListener("click", ()=> {
+    if (specialBtnPressed == false) {
     specialBtnPressed = true                    // sets special button pressed to true to block other images coming over the top
     yourPet.feedIceLolly();                     // runs action funtion
     updateStats(yourPet);                       // updates stat changes on screen
@@ -673,9 +678,10 @@ iceLollyBtn.addEventListener("click", ()=> {
     specialBtnPressed = false                   // returns special button pressed to false so that other images may resume
     updateEmote(yourPet)
     }, 4000);
-    })
+    }})
 
 trimClawsBtn.addEventListener("click", ()=> {
+    if (specialBtnPressed == false) {
     specialBtnPressed = true                    // sets special button pressed to true to block other images coming over the top
     yourPet.trimClaws();                     // runs action funtion
     updateStats(yourPet);                       // updates stat changes on screen
@@ -689,9 +695,10 @@ trimClawsBtn.addEventListener("click", ()=> {
     specialBtnPressed = false                   // returns special button pressed to false so that other images may resume
     updateEmote(yourPet)
     }, 4000);
-    })
+    }})
 
 teachDisgBtn.addEventListener("click", ()=> {
+    if (specialBtnPressed == false) {
     specialBtnPressed = true                    // sets special button pressed to true to block other images coming over the top
     yourPet.teachTrickDisguise();                     // runs action funtion
     updateStats(yourPet);                       // updates stat changes on screen
@@ -705,9 +712,10 @@ teachDisgBtn.addEventListener("click", ()=> {
     specialBtnPressed = false                   // returns special button pressed to false so that other images may resume
     updateEmote(yourPet)
     }, 4000);
-    })
+    }})
            
 giveWatch.addEventListener("click", ()=> {
+    if (specialBtnPressed == false) {
     specialBtnPressed = true                    // sets special button pressed to true to block other images coming over the top
     yourPet.giveWatch();                     // runs action funtion
     updateStats(yourPet);                       // updates stat changes on screen
@@ -721,9 +729,12 @@ giveWatch.addEventListener("click", ()=> {
     specialBtnPressed = false                   // returns special button pressed to false so that other images may resume
     updateEmote(yourPet)
     }, 4000);
-    })
+    }})
+
+ // Penguin ---------------
 
 spicyTunaBtn.addEventListener("click", ()=> {
+    if (specialBtnPressed == false) {
     specialBtnPressed = true                    // sets special button pressed to true to block other images coming over the top
     yourPet.feedSpicyTunaFish();                     // runs action funtion
     updateStats(yourPet);                       // updates stat changes on screen
@@ -737,9 +748,10 @@ spicyTunaBtn.addEventListener("click", ()=> {
     specialBtnPressed = false                   // returns special button pressed to false so that other images may resume
     updateEmote(yourPet)
     }, 4000);
-    })    
+    }})    
                     
 blowDryBtn.addEventListener("click", ()=> {
+    if (specialBtnPressed == false) {
     specialBtnPressed = true                    // sets special button pressed to true to block other images coming over the top
     yourPet.blowDry();                     // runs action funtion
     updateStats(yourPet);                       // updates stat changes on screen
@@ -753,10 +765,11 @@ blowDryBtn.addEventListener("click", ()=> {
     specialBtnPressed = false                   // returns special button pressed to false so that other images may resume
     updateEmote(yourPet)
     }, 4000);
-    })   
+    }})   
 
 
 danceBtn.addEventListener("click", ()=> {
+    if (specialBtnPressed == false) {
     specialBtnPressed = true                    // sets special button pressed to true to block other images coming over the top
     yourPet.teachTrickDance();                     // runs action funtion
     updateStats(yourPet);                       // updates stat changes on screen
@@ -770,9 +783,10 @@ danceBtn.addEventListener("click", ()=> {
     specialBtnPressed = false                   // returns special button pressed to false so that other images may resume
     updateEmote(yourPet)
     }, 4000);
-    })  
+    }})  
 
 giveHatBtn.addEventListener("click", ()=> {
+    if (specialBtnPressed == false) {
     specialBtnPressed = true                    // sets special button pressed to true to block other images coming over the top
     yourPet.giveSnoozingHat();                     // runs action funtion
     updateStats(yourPet);                       // updates stat changes on screen
@@ -786,9 +800,12 @@ giveHatBtn.addEventListener("click", ()=> {
     specialBtnPressed = false                   // returns special button pressed to false so that other images may resume
     updateEmote(yourPet)
     }, 4000);
-    })     
+    }}) 
+    
+// elephant ---------------
                     
 chilliBowlBtn.addEventListener("click", ()=> {
+    if (specialBtnPressed == false) {
     specialBtnPressed = true                    // sets special button pressed to true to block other images coming over the top
     yourPet.feedChilli();                     // runs action funtion
     updateStats(yourPet);                       // updates stat changes on screen
@@ -802,9 +819,10 @@ chilliBowlBtn.addEventListener("click", ()=> {
     specialBtnPressed = false                   // returns special button pressed to false so that other images may resume
     updateEmote(yourPet)
     }, 4000);
-    }) 
+    }}) 
 
 takeBathBtn.addEventListener("click", ()=> {
+    if (specialBtnPressed == false) {
     specialBtnPressed = true                    // sets special button pressed to true to block other images coming over the top
     yourPet.takeBath();                     // runs action funtion
     updateStats(yourPet);                       // updates stat changes on screen
@@ -818,9 +836,10 @@ takeBathBtn.addEventListener("click", ()=> {
     specialBtnPressed = false                   // returns special button pressed to false so that other images may resume
     updateEmote(yourPet)
     }, 4000);
-    }) 
+    }}) 
 
 balanceBtn.addEventListener("click", ()=> {
+    if (specialBtnPressed == false) {
     specialBtnPressed = true                    // sets special button pressed to true to block other images coming over the top
     yourPet.teachTrickBalance();                     // runs action funtion
     updateStats(yourPet);                       // updates stat changes on screen
@@ -834,9 +853,10 @@ balanceBtn.addEventListener("click", ()=> {
     specialBtnPressed = false                   // returns special button pressed to false so that other images may resume
     updateEmote(yourPet)
     }, 4000);
-    }) 
+    }}) 
 
 giveTrollBtn.addEventListener("click", ()=> {
+    if (specialBtnPressed == false) {
     specialBtnPressed = true                    // sets special button pressed to true to block other images coming over the top
     yourPet.giveTrollDoll();                     // runs action funtion
     updateStats(yourPet);                       // updates stat changes on screen
@@ -850,7 +870,7 @@ giveTrollBtn.addEventListener("click", ()=> {
     specialBtnPressed = false                   // returns special button pressed to false so that other images may resume
     updateEmote(yourPet)
     }, 4000);
-    }) 
+    }}) 
 
 
 const updateStats = (yourPet) => {
@@ -863,6 +883,12 @@ const updateStats = (yourPet) => {
     comfortNum.textContent = yourPet.comfort;
     socialNum.textContent = yourPet.social;
     hygieneNum.textContent = yourPet.hygiene;
+    if (yourPet.age >= 1 && yourPet.age < 2) {
+        petAgeText.textContent = `${Math.floor(yourPet.age)} day old`;
+    }
+    else{
+    petAgeText.textContent = `${Math.floor(yourPet.age)} days old`;
+    }
     updateStatBars(yourPet);
 }
 }
@@ -962,6 +988,8 @@ const updateEmote = (yourPet) => {              // changes the image of your pet
             petImages[12].style.display = "none";
             petImages[15].style.display = "none";
             petImages[22].style.display = "block";
+            ripText.style.display = "block";
+            ripText.textContent = `${yourPet.firstName}`;
         }
         else if (yourPet.health >= 75) {
             emoteText.textContent = `${yourPet.firstName} is happy `;
@@ -1034,22 +1062,31 @@ const timingFunction = (yourPet) => {                   // this reduces each sta
     if (petLiving == true && gameReset == false) {  
     window.setTimeout(() => {
         yourPet.hunger -= 2;
+        if (yourPet.trait == "Greedy") {
+            yourPet.hunger -= 1;}
         if (yourPet.hunger < 0){
             yourPet.hunger = 0}
-        yourPet.thirst -= 3;
+        yourPet.thirst -= 2;
         if (yourPet.thirst < 0){
             yourPet.thirst = 0}
-        yourPet.comfort -= 1;
+        yourPet.comfort -= 2;
+        if (yourPet.trait == "Restless") {
+            yourPet.comfort -= 1;}
         if (yourPet.comfort < 0){
             yourPet.comfort = 0}
         yourPet.social -= 2;
+        if (yourPet.trait == "Playful") {
+            yourPet.social -= 1;}
         if (yourPet.social < 0){
             yourPet.social = 0}
-        yourPet.hygiene -= 1;
+        yourPet.hygiene -= 2;
+        if (yourPet.trait == "Messy") {
+            yourPet.hygiene -= 1;}
         if (yourPet.hygiene < 0){
             yourPet.hygiene = 0}
+        yourPet.age += (1/12)
         updateStats(yourPet);
         timingFunction(yourPet);
-    }, 2000);
+    }, 4000);
     }
 }

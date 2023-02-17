@@ -16,25 +16,22 @@
         <button id="reset-button">RESET</button>
     </div>
 
-    <div id="pet-descriptors">
-        <small id="pet-emote">PET NAME is currently sad.</small>
-        <small id="pet-action">You Fed PET NAME.</small>
-    </div>
-
     <div id = "starting-instructions">
         <h3 id = "instructor"></h3>
-        <input id="text-input" type="text">
-        <button class = button id ="sloth-start">Sloth</button>
-        <button class = button id ="peng-start">Penguin</button>
-        <button class = button id ="eleph-start">Elephant</button>
+        <div id = starter-btns>
+            <input id="text-input" type="text">
+            <button class = button id ="sloth-start">Sloth</button>
+            <button class = button id ="peng-start">Penguin</button>
+            <button class = button id ="eleph-start">Elephant</button>
+        </div>
     </div>
 
     <div id="pet-space">
         <div id="status">
             <div id = "your-pet-box">
-                <p id = pet-name>Hello World</p>
-                <p id = pet-age>Hello World</p>
-                <p id = pet-trait>Hello World</p>
+                <p id = pet-name>A new world awaits</p>
+                <p id = pet-age></p>
+                <p id = pet-trait></p>
             </div>
             <div class = "status-box">
                 <small class = "status-text">HEALTH:</small>
@@ -63,6 +60,8 @@
         </div>
         <div id = "images">
             <img class = "backgroundImage" id = "starter-background" src = "/Images/zoo-entrance.jpg">
+            <small class = pet-stuff id= "pet-emote"></small>
+            <small class = pet-stuff id ="pet-action"></small>
             <img class = "mainImage" id = "starterEgg" src = "https://media.tenor.com/AMEXdD396dsAAAAi/bluewizarddigital-blue-wizard.gif">
             <img class = "backgroundImage" id = "jungle-background" src = "https://static.vecteezy.com/system/resources/previews/007/252/738/original/cartoon-forest-environment-background-free-vector.jpg">
             <img class = "mainImage" id = "slothCry" src= "https://media.tenor.com/_-I2sChX9Y4AAAAi/sloth-animal.gif">
@@ -89,6 +88,7 @@
             <img class = "mainImage" id = "eleClean" src = "https://media.tenor.com/V2Eccq4wNw8AAAAi/canticos-elephant.gif">
             <img class = "mainImage" id = "eleBal" src = "https://media.tenor.com/nh2DcAW140AAAAAi/canticos-elephant.gif">
             <img class = "mainImage" id = "death" src = "https://media.tenor.com/c8LcrRJMk3EAAAAi/rip-tombstone.gif">
+            <small class = pet-stuff id= "pet-rip"></small>
         </div>
         <div id="inputs">
             <div class = "dropdown">
@@ -126,7 +126,7 @@
                 <div class = dropdown-content id = "give-dropdown">
                     <button class ="action-button" id = "drink-button">Give Drink</button>
                     <button class ="action-button" id = "toy-button">Give Toy</button>
-                    <button class ="special-button" id = "give-hat">Give Snoozing Hat</button>
+                    <button class ="special-button" id = "give-hat">Give Comfy Hat</button>
                     <button class ="special-button" id = "give-troll">Give Troll Doll</button>
                     <button class ="special-button" id = "give-watch">Give Watch</button>
                 </div>
