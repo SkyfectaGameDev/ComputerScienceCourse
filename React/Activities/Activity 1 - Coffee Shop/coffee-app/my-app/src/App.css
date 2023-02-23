@@ -1,0 +1,84 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(225, 225, 225);
+}
+
+.menu-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  padding-top: 30px;
+  background-color: rgb(200, 200, 200);
+  gap: 50px;
+  height: 600px;
+}
+
+.order {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(175, 175, 175);
+  gap: 10px;
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  gap: 10px;
+  width: 200px;
+}
+
+.interface {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+#menu-img {
+  width: 400px;
+}
+
+#menu-item {
+  text-align: right;
+  padding-block: 20px;
+  padding-right: 10px;
+  background-color: rgb(150, 150, 150);
+  font-size: 20px;
+}
+
+#interface-item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: right;
+  gap: 10px;
+  width: 300px;
+  margin-bottom: 10px;
+}
+
+#interface-button {
+  text-align: center;
+  padding-block: 20px;
+  background-color: rgb(150, 150, 150);
+  font-size: 20px;
+  width: 50px;
+}
+
+#interface-counter {
+  text-align: center;
+  padding-block: 20px;
+  background-color: rgb(150, 150, 150);
+  font-size: 20px;
+  width: 100px;
+}
+
+#total {
+  width: 270px;
+  text-align: right;
+  padding-block: 20px;
+  padding-right: 10px;
+  background-color: rgb(150, 150, 150);
+  font-size: 20px;
+}
