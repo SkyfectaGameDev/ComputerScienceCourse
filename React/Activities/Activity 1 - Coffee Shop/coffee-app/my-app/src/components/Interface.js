@@ -1,24 +1,21 @@
-import React, { useState } from 'react';
-
-const Interface = () => {
-    const [counter, setCounter] = useState(0);
+const Interface = (props) => {
     const decrease = () => {
-        if (counter > 0) {
-            setCounter(count => count - 1);
+        if (props.counter > 0) {
+            props.setCounter(props.counter - 1);
         }
     };
     const increase = () => {
-        setCounter(count => count + 1);
+        props.setCounter(props.counter + 1);
     };
     const reset = () => {
-        setCounter(0);
+        props.setCounter(0);
     };
     
     return (
     <div id="interface-item">
         <button id="interface-button" onClick={decrease}>-</button>
         <button id="interface-button" onClick={increase}>+</button>
-        <span id="interface-counter">{counter}</span>
+        <span id="interface-counter">{props.counter}</span>
         <button id="interface-button" onClick={reset}>x</button>
     </div>
     )

@@ -6,7 +6,9 @@ import Total from './components/Total.js';
 import React, { useState } from 'react';
 
 function App() {
-  
+
+  const [counters, setCounters] = useState([0, 0, 0]);
+
   return (
     <div className="container">
       <h1>Coffee Shop</h1>
@@ -19,10 +21,10 @@ function App() {
             <Items item="Macchiato: £3.40"/>
           </div>
           <div className ="interface">
-            <Interface/>
-            <Interface/>
-            <Interface/>
-            <Total/>
+          <Interface counter={counters[0]} setCounter={(value) => setCounters([value, counters[1], counters[2]])} />
+          <Interface counter={counters[1]} setCounter={(value) => setCounters([counters[0], value, counters[2]])} />
+          <Interface counter={counters[2]} setCounter={(value) => setCounters([counters[0], counters[1], value])} />
+            <Total total={counters}/>
           </div>
         </div>
       </div>
