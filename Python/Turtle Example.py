@@ -108,4 +108,4 @@ for t in range(0,4):
     turt.left(90)
 
 
-x = input("Press any key to stop...")
+x = input("Press enter to stop...")
